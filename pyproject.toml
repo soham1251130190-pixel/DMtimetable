@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+pythonpath = [
+    ".",
+    "timetable/backend",
+    "timetable"
+]
+testpaths = ["tests"]
