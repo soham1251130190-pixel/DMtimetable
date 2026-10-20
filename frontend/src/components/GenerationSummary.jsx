@@ -5,7 +5,7 @@ export default function GenerationSummary({ generateResult, loading, error }) {
     return (
       <div className="summary-empty">
         <div className="loading-spinner"></div>
-        <p>Loading schedule quality summary...</p>
+        <p>Loading schedule verification report...</p>
       </div>
     );
   }
@@ -13,7 +13,7 @@ export default function GenerationSummary({ generateResult, loading, error }) {
   if (error || !generateResult) {
     return (
       <div className="summary-empty error">
-        <p className="error-title">Schedule summary not available</p>
+        <p className="error-title">Schedule verification report not available</p>
         <p className="error-desc">{error || 'No generation result record found.'}</p>
       </div>
     );
@@ -23,13 +23,10 @@ export default function GenerationSummary({ generateResult, loading, error }) {
     run_id = 2,
     status = 'ok',
     colors_used = 15,
-    score = { total: 0, breakdown: { consecutive: 0, gap: 0, spread: 0 } },
     violations = [],
   } = generateResult;
 
   const isSuccess = status === 'ok';
-  const totalScore = score?.total ?? 0;
-  const breakdown = score?.breakdown ?? {};
 
   return (
     <div className="summary-wrapper">
@@ -41,74 +38,19 @@ export default function GenerationSummary({ generateResult, loading, error }) {
               {isSuccess ? 'Schedule Solved & Verified' : 'Generation Incomplete'}
             </span>
           </div>
-          <h3 className="section-title">Schedule Optimization & Constraint Report</h3>
+          <h3 className="section-title">Institutional Rules & Schedule Verification</h3>
           <p className="section-subtitle">
-            Diagnostic breakdown of physical classroom allocations, fatigue prevention, and cohort comfort metrics.
+            Operational verification of faculty assignments, student cohort schedules, and physical room allocations.
           </p>
         </div>
       </div>
 
       <div className="summary-grid">
-        {/* Soft Constraint Quality Metrics */}
+        {/* Institutional Rule Verification */}
         <div className="summary-card">
           <div className="card-header">
-            <h4>Academic Comfort & Quality Metrics</h4>
-            <span className="card-sub">Lower penalty score indicates higher schedule balance</span>
-          </div>
-          <div className="metric-score-display">
-            <div className="big-score">
-              <span className="score-num">{totalScore}</span>
-              <span className="score-label">Total Penalty Points</span>
-            </div>
-            <div className="score-rating">
-              {totalScore === 0 ? (
-                <span className="rating-badge optimal">Optimal Distribution</span>
-              ) : totalScore < 20 ? (
-                <span className="rating-badge good">Well-Balanced</span>
-              ) : (
-                <span className="rating-badge moderate">Acceptable Distribution</span>
-              )}
-            </div>
-          </div>
-
-          <div className="breakdown-list">
-            <div className="breakdown-row">
-              <div className="breakdown-info">
-                <strong>Faculty & Student Fatigue Guard</strong>
-                <p>Ensures neither faculty nor student cohorts have more than 3 consecutive lecture hours</p>
-              </div>
-              <span className={`breakdown-badge ${breakdown.consecutive === 0 ? 'zero' : 'nonzero'}`}>
-                {breakdown.consecutive ?? 0} penalties
-              </span>
-            </div>
-
-            <div className="breakdown-row">
-              <div className="breakdown-info">
-                <strong>Idle Hour Minimization</strong>
-                <p>Eliminates scattered gap periods between first and last lecture of the day</p>
-              </div>
-              <span className={`breakdown-badge ${breakdown.gap === 0 ? 'zero' : 'nonzero'}`}>
-                {breakdown.gap ?? 0} penalties
-              </span>
-            </div>
-
-            <div className="breakdown-row">
-              <div className="breakdown-info">
-                <strong>Daily Subject Variety</strong>
-                <p>Distributes same-subject lectures across multiple days to prevent cognitive fatigue</p>
-              </div>
-              <span className={`breakdown-badge ${breakdown.spread === 0 ? 'zero' : 'nonzero'}`}>
-                {breakdown.spread ?? 0} penalties
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Hard Constraints & Operational Verification */}
-        <div className="summary-card">
-          <div className="card-header">
-            <h4>Institutional Rule Verification</h4>
-            <span className="card-sub">Every mandatory academic rule verified prior to schedule approval</span>
+            <h4>Mandatory Rule Verification</h4>
+            <span className="card-sub">Every institutional constraint verified prior to schedule approval</span>
           </div>
 
           <div className="constraint-checklist">
@@ -124,14 +66,14 @@ export default function GenerationSummary({ generateResult, loading, error }) {
               <span className="check-icon">✓</span>
               <div>
                 <strong>No Student Cohort Overlaps</strong>
-                <p>Each division attends exactly one lecture or lab at any given period</p>
+                <p>Each class division attends exactly one lecture or lab at any given period</p>
               </div>
             </div>
 
             <div className="check-item passed">
               <span className="check-icon">✓</span>
               <div>
-                <strong>No Room Conflicts & Sufficient Capacity</strong>
+                <strong>Room Capacity & Facility Sufficiency</strong>
                 <p>Room capacities match or exceed class strength; laboratories assigned only for practicals</p>
               </div>
             </div>
@@ -144,17 +86,47 @@ export default function GenerationSummary({ generateResult, loading, error }) {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Timeslot & Allocation Metrics */}
+        <div className="summary-card">
+          <div className="card-header">
+            <h4>Weekly Period Allocation</h4>
+            <span className="card-sub">Distribution of classroom and laboratory slots across working days</span>
+          </div>
 
           <div className="timeslot-utilization-box">
             <div className="utilization-label">
-              <span>Weekly Timeslot Allocation:</span>
-              <strong>{colors_used} of 30 periods used</strong>
+              <span>Weekly Timeslot Usage:</span>
+              <strong>{colors_used} of 30 periods allocated</strong>
             </div>
             <div className="utilization-bar">
               <div
                 className="utilization-fill"
                 style={{ width: `${Math.min(100, (colors_used / 30) * 100)}%` }}
               ></div>
+            </div>
+          </div>
+
+          <div className="breakdown-list" style={{ marginTop: '16px' }}>
+            <div className="breakdown-row">
+              <div className="breakdown-info">
+                <strong>Schedule Status</strong>
+                <p>Constraint satisfaction status across all divisions and faculty</p>
+              </div>
+              <span className="breakdown-badge zero">
+                {isSuccess ? '0 Clashes Detected' : 'Unresolved Conflicts'}
+              </span>
+            </div>
+
+            <div className="breakdown-row">
+              <div className="breakdown-info">
+                <strong>Hard Constraint Violations</strong>
+                <p>Independent verification against institutional rules</p>
+              </div>
+              <span className="breakdown-badge zero">
+                {violations.length} Violations
+              </span>
             </div>
           </div>
 

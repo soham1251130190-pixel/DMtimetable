@@ -14,8 +14,8 @@
       "id": "1",
       "type": "default",
       "position": {
-        "x": 80,
-        "y": 80
+        "x": 120,
+        "y": 100
       },
       "data": {
         "sessionId": 1,
@@ -39,8 +39,8 @@
       "id": "2",
       "type": "default",
       "position": {
-        "x": 80,
-        "y": 200
+        "x": 420,
+        "y": 100
       },
       "data": {
         "sessionId": 2,
@@ -64,8 +64,8 @@
       "id": "3",
       "type": "default",
       "position": {
-        "x": 80,
-        "y": 320
+        "x": 120,
+        "y": 270
       },
       "data": {
         "sessionId": 3,
@@ -89,8 +89,8 @@
       "id": "4",
       "type": "default",
       "position": {
-        "x": 80,
-        "y": 440
+        "x": 420,
+        "y": 270
       },
       "data": {
         "sessionId": 4,
@@ -114,8 +114,8 @@
       "id": "5",
       "type": "default",
       "position": {
-        "x": 280,
-        "y": 80
+        "x": 120,
+        "y": 440
       },
       "data": {
         "sessionId": 5,
@@ -139,8 +139,8 @@
       "id": "6",
       "type": "default",
       "position": {
-        "x": 280,
-        "y": 200
+        "x": 420,
+        "y": 440
       },
       "data": {
         "sessionId": 6,
@@ -164,8 +164,8 @@
       "id": "7",
       "type": "default",
       "position": {
-        "x": 280,
-        "y": 320
+        "x": 120,
+        "y": 610
       },
       "data": {
         "sessionId": 7,
@@ -189,8 +189,8 @@
       "id": "8",
       "type": "default",
       "position": {
-        "x": 280,
-        "y": 440
+        "x": 420,
+        "y": 610
       },
       "data": {
         "sessionId": 8,
@@ -214,8 +214,8 @@
       "id": "9",
       "type": "default",
       "position": {
-        "x": 560,
-        "y": 80
+        "x": 860,
+        "y": 100
       },
       "data": {
         "sessionId": 9,
@@ -239,8 +239,8 @@
       "id": "10",
       "type": "default",
       "position": {
-        "x": 560,
-        "y": 200
+        "x": 1160,
+        "y": 100
       },
       "data": {
         "sessionId": 10,
@@ -264,8 +264,8 @@
       "id": "11",
       "type": "default",
       "position": {
-        "x": 560,
-        "y": 320
+        "x": 860,
+        "y": 270
       },
       "data": {
         "sessionId": 11,
@@ -289,8 +289,8 @@
       "id": "12",
       "type": "default",
       "position": {
-        "x": 560,
-        "y": 440
+        "x": 1160,
+        "y": 270
       },
       "data": {
         "sessionId": 12,
@@ -314,8 +314,8 @@
       "id": "13",
       "type": "default",
       "position": {
-        "x": 760,
-        "y": 80
+        "x": 860,
+        "y": 440
       },
       "data": {
         "sessionId": 13,
@@ -339,8 +339,8 @@
       "id": "14",
       "type": "default",
       "position": {
-        "x": 760,
-        "y": 200
+        "x": 1160,
+        "y": 440
       },
       "data": {
         "sessionId": 14,
@@ -364,8 +364,8 @@
       "id": "15",
       "type": "default",
       "position": {
-        "x": 760,
-        "y": 320
+        "x": 860,
+        "y": 610
       },
       "data": {
         "sessionId": 15,
@@ -389,8 +389,8 @@
       "id": "16",
       "type": "default",
       "position": {
-        "x": 760,
-        "y": 440
+        "x": 1160,
+        "y": 610
       },
       "data": {
         "sessionId": 16,
