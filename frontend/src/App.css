@@ -9,14 +9,71 @@
 /* ================= Header & Status ================= */
 .app-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  padding: 18px 24px;
+  padding: 16px 24px;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-connectivity {
+  display: flex;
+  align-items: center;
+}
+
+.connectivity-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.connectivity-pill.online {
+  background-color: #EDF7ED;
+  color: #1E4620;
+  border-color: #C8E6C9;
+}
+
+.connectivity-pill.offline {
+  background-color: #FFF8E1;
+  color: #795548;
+  border-color: #FFE082;
+}
+
+.connectivity-pill.checking {
+  background-color: #F5F5F5;
+  color: #757575;
+  border-color: #E0E0E0;
+}
+
+.connectivity-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.connectivity-pill.online .connectivity-dot {
+  background-color: #2E7D32;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+.connectivity-pill.offline .connectivity-dot {
+  background-color: #B78103;
+}
+
+.connectivity-pill.checking .connectivity-dot {
+  background-color: #9E9E9E;
 }
 
 .brand-section {

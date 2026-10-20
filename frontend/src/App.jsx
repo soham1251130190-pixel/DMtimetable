@@ -1,12 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import OverviewCards from './components/OverviewCards.jsx';
 import TimetableTable from './components/TimetableTable.jsx';
 import ConflictGraph from './components/ConflictGraph.jsx';
 import GenerationSummary from './components/GenerationSummary.jsx';
 import './App.css';
 
+/**
+ * Normalizes API endpoint URLs to avoid accidental double slashes or duplicated '/api' segments.
+ * Handles inputs like 'https://service.onrender.com', 'https://service.onrender.com/', or 'https://service.onrender.com/api'.
+ */
+export const buildApiUrl = (baseUrl, endpoint = '/api/health') => {
+  const base = (baseUrl || 'http://127.0.0.1:8000').trim().replace(/\/+$/, '');
+  const path = endpoint.trim().startsWith('/') ? endpoint.trim() : `/${endpoint.trim()}`;
+
+  // If base already ends with /api and endpoint starts with /api/, avoid duplicate /api/api
+  if (base.endsWith('/api') && path.startsWith('/api/')) {
+    return `${base}${path.slice(4)}`;
+  }
+  // If base already ends with the target endpoint, avoid duplicate
+  if (base.endsWith(path)) {
+    return base;
+  }
+  return `${base}${path}`;
+};
+
+// Vite environment variable with local development fallback
+const rawApiBase = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000';
+export const API_BASE_URL = rawApiBase.replace(/\/+$/, '');
+export const HEALTH_CHECK_URL = buildApiUrl(API_BASE_URL, '/api/health');
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('timetable'); // 'timetable' | 'graph' | 'summary'
+
+  // Backend Health State (independent of static sample data)
+  const [backendOnline, setBackendOnline] = useState(null); // null (checking) | true | false
 
   // Mock Data States
   const [timetableData, setTimetableData] = useState(null);
@@ -21,7 +48,30 @@ export default function App() {
   const [generateLoading, setGenerateLoading] = useState(true);
   const [generateError, setGenerateError] = useState(null);
 
-  // Load Static Mock Data
+  // Check Backend Health using normalized HEALTH_CHECK_URL
+  const checkHealth = useCallback(async () => {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3000);
+      const res = await fetch(HEALTH_CHECK_URL, { signal: controller.signal });
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        const data = await res.json();
+        setBackendOnline(data.status === 'ok');
+      } else {
+        setBackendOnline(false);
+      }
+    } catch {
+      setBackendOnline(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkHealth();
+  }, [checkHealth]);
+
+  // Load Static Mock Data (Always separate and resilient)
   useEffect(() => {
     // 1. Timetable Mock
     fetch('/mock-data/timetable.json')
@@ -71,7 +121,7 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Simplified Brand Header */}
+      {/* Brand Header with Connectivity Indicator */}
       <header className="app-header">
         <div className="brand-section">
           <div className="brand-icon">🏛️</div>
@@ -79,6 +129,24 @@ export default function App() {
             <h1 className="app-title">Timetable Manager</h1>
             <p className="app-subtitle">Academic Schedule & Faculty Workload Portal</p>
           </div>
+        </div>
+
+        <div className="header-connectivity">
+          <span
+            className={`connectivity-pill ${
+              backendOnline === true
+                ? 'online'
+                : backendOnline === false
+                ? 'offline'
+                : 'checking'
+            }`}
+            title={`Backend endpoint: ${HEALTH_CHECK_URL}`}
+          >
+            <span className="connectivity-dot"></span>
+            {backendOnline === true && 'API Online'}
+            {backendOnline === false && 'API Offline (Sample View)'}
+            {backendOnline === null && 'Connecting...'}
+          </span>
         </div>
       </header>
 
