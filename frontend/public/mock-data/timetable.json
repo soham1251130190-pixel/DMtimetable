@@ -16,13 +16,13 @@
   "divisions": [
     {
       "division_id": 1,
-      "name": "SE-A",
+      "name": "IT-A",
       "year": 2,
       "strength": 48
     },
     {
       "division_id": 2,
-      "name": "SE-B",
+      "name": "IT-B",
       "year": 2,
       "strength": 45
     }
