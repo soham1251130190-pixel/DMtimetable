@@ -1,0 +1,22 @@
+
+# Python virtual environments
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Test and editor artifacts
+.pytest_cache/
+.coverage
+.vscode/
+.idea/
+
+# Frontend dependencies and build output
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Local environment secrets
+.env
