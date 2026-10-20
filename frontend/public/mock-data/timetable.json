@@ -1,0 +1,622 @@
+{
+  "run_id": 1,
+  "dataset": "small",
+  "status": "sample",
+  "created_at": "2026-10-07 04:58:21",
+  "colors_used": 16,
+  "score": {
+    "total": 14,
+    "breakdown": {
+      "consecutive": 0,
+      "gap": 14,
+      "spread": 0
+    }
+  },
+  "total_sessions": 16,
+  "divisions": [
+    {
+      "division_id": 1,
+      "name": "SE-A",
+      "year": 2,
+      "strength": 48
+    },
+    {
+      "division_id": 2,
+      "name": "SE-B",
+      "year": 2,
+      "strength": 45
+    }
+  ],
+  "teachers": [
+    {
+      "teacher_id": 1,
+      "name": "Dr. Anita Deshmukh",
+      "department": "Mathematics",
+      "max_lectures_per_day": 4
+    },
+    {
+      "teacher_id": 2,
+      "name": "Prof. Rahul Kulkarni",
+      "department": "Computer Science",
+      "max_lectures_per_day": 4
+    },
+    {
+      "teacher_id": 3,
+      "name": "Prof. Meera Iyer",
+      "department": "Electronics",
+      "max_lectures_per_day": 4
+    },
+    {
+      "teacher_id": 4,
+      "name": "Prof. Imran Shaikh",
+      "department": "Humanities",
+      "max_lectures_per_day": 4
+    },
+    {
+      "teacher_id": 5,
+      "name": "Prof. Sneha Bhosale",
+      "department": "Computer Science",
+      "max_lectures_per_day": 4
+    }
+  ],
+  "rooms": [
+    {
+      "room_id": 1,
+      "name": "R101",
+      "capacity": 60,
+      "room_type": "classroom"
+    },
+    {
+      "room_id": 2,
+      "name": "R102",
+      "capacity": 60,
+      "room_type": "classroom"
+    },
+    {
+      "room_id": 3,
+      "name": "R103",
+      "capacity": 50,
+      "room_type": "classroom"
+    },
+    {
+      "room_id": 4,
+      "name": "LAB-1",
+      "capacity": 50,
+      "room_type": "lab"
+    }
+  ],
+  "timeslots": [
+    {
+      "slot_id": 1,
+      "day": "Mon",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00"
+    },
+    {
+      "slot_id": 2,
+      "day": "Mon",
+      "period": 2,
+      "start_time": "10:00",
+      "end_time": "11:00"
+    },
+    {
+      "slot_id": 3,
+      "day": "Mon",
+      "period": 3,
+      "start_time": "11:15",
+      "end_time": "12:15"
+    },
+    {
+      "slot_id": 4,
+      "day": "Mon",
+      "period": 4,
+      "start_time": "12:15",
+      "end_time": "13:15"
+    },
+    {
+      "slot_id": 5,
+      "day": "Mon",
+      "period": 5,
+      "start_time": "14:00",
+      "end_time": "15:00"
+    },
+    {
+      "slot_id": 6,
+      "day": "Mon",
+      "period": 6,
+      "start_time": "15:00",
+      "end_time": "16:00"
+    },
+    {
+      "slot_id": 7,
+      "day": "Tue",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00"
+    },
+    {
+      "slot_id": 8,
+      "day": "Tue",
+      "period": 2,
+      "start_time": "10:00",
+      "end_time": "11:00"
+    },
+    {
+      "slot_id": 9,
+      "day": "Tue",
+      "period": 3,
+      "start_time": "11:15",
+      "end_time": "12:15"
+    },
+    {
+      "slot_id": 10,
+      "day": "Tue",
+      "period": 4,
+      "start_time": "12:15",
+      "end_time": "13:15"
+    },
+    {
+      "slot_id": 11,
+      "day": "Tue",
+      "period": 5,
+      "start_time": "14:00",
+      "end_time": "15:00"
+    },
+    {
+      "slot_id": 12,
+      "day": "Tue",
+      "period": 6,
+      "start_time": "15:00",
+      "end_time": "16:00"
+    },
+    {
+      "slot_id": 13,
+      "day": "Wed",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00"
+    },
+    {
+      "slot_id": 14,
+      "day": "Wed",
+      "period": 2,
+      "start_time": "10:00",
+      "end_time": "11:00"
+    },
+    {
+      "slot_id": 15,
+      "day": "Wed",
+      "period": 3,
+      "start_time": "11:15",
+      "end_time": "12:15"
+    },
+    {
+      "slot_id": 16,
+      "day": "Wed",
+      "period": 4,
+      "start_time": "12:15",
+      "end_time": "13:15"
+    },
+    {
+      "slot_id": 17,
+      "day": "Wed",
+      "period": 5,
+      "start_time": "14:00",
+      "end_time": "15:00"
+    },
+    {
+      "slot_id": 18,
+      "day": "Wed",
+      "period": 6,
+      "start_time": "15:00",
+      "end_time": "16:00"
+    },
+    {
+      "slot_id": 19,
+      "day": "Thu",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00"
+    },
+    {
+      "slot_id": 20,
+      "day": "Thu",
+      "period": 2,
+      "start_time": "10:00",
+      "end_time": "11:00"
+    },
+    {
+      "slot_id": 21,
+      "day": "Thu",
+      "period": 3,
+      "start_time": "11:15",
+      "end_time": "12:15"
+    },
+    {
+      "slot_id": 22,
+      "day": "Thu",
+      "period": 4,
+      "start_time": "12:15",
+      "end_time": "13:15"
+    },
+    {
+      "slot_id": 23,
+      "day": "Thu",
+      "period": 5,
+      "start_time": "14:00",
+      "end_time": "15:00"
+    },
+    {
+      "slot_id": 24,
+      "day": "Thu",
+      "period": 6,
+      "start_time": "15:00",
+      "end_time": "16:00"
+    },
+    {
+      "slot_id": 25,
+      "day": "Fri",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00"
+    },
+    {
+      "slot_id": 26,
+      "day": "Fri",
+      "period": 2,
+      "start_time": "10:00",
+      "end_time": "11:00"
+    },
+    {
+      "slot_id": 27,
+      "day": "Fri",
+      "period": 3,
+      "start_time": "11:15",
+      "end_time": "12:15"
+    },
+    {
+      "slot_id": 28,
+      "day": "Fri",
+      "period": 4,
+      "start_time": "12:15",
+      "end_time": "13:15"
+    },
+    {
+      "slot_id": 29,
+      "day": "Fri",
+      "period": 5,
+      "start_time": "14:00",
+      "end_time": "15:00"
+    },
+    {
+      "slot_id": 30,
+      "day": "Fri",
+      "period": 6,
+      "start_time": "15:00",
+      "end_time": "16:00"
+    }
+  ],
+  "rows": [
+    {
+      "run_id": 1,
+      "session_id": 8,
+      "session_no": 2,
+      "subject_id": 5,
+      "subject_code": "CS202",
+      "subject_name": "Data Structures Lab",
+      "subject_type": "lab",
+      "division_id": 1,
+      "division_name": "SE-A",
+      "teacher_id": 5,
+      "teacher_name": "Prof. Sneha Bhosale",
+      "slot_id": 1,
+      "day": "Mon",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00",
+      "room_id": 4,
+      "room_name": "LAB-1"
+    },
+    {
+      "run_id": 1,
+      "session_id": 14,
+      "session_no": 1,
+      "subject_id": 4,
+      "subject_code": "HS201",
+      "subject_name": "Technical Communication",
+      "subject_type": "theory",
+      "division_id": 2,
+      "division_name": "SE-B",
+      "teacher_id": 4,
+      "teacher_name": "Prof. Imran Shaikh",
+      "slot_id": 3,
+      "day": "Mon",
+      "period": 3,
+      "start_time": "11:15",
+      "end_time": "12:15",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 11,
+      "session_no": 1,
+      "subject_id": 2,
+      "subject_code": "CS201",
+      "subject_name": "Data Structures",
+      "subject_type": "theory",
+      "division_id": 2,
+      "division_name": "SE-B",
+      "teacher_id": 2,
+      "teacher_name": "Prof. Rahul Kulkarni",
+      "slot_id": 5,
+      "day": "Mon",
+      "period": 5,
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 6,
+      "session_no": 1,
+      "subject_id": 4,
+      "subject_code": "HS201",
+      "subject_name": "Technical Communication",
+      "subject_type": "theory",
+      "division_id": 1,
+      "division_name": "SE-A",
+      "teacher_id": 4,
+      "teacher_name": "Prof. Imran Shaikh",
+      "slot_id": 7,
+      "day": "Tue",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 9,
+      "session_no": 1,
+      "subject_id": 1,
+      "subject_code": "MA201",
+      "subject_name": "Discrete Mathematics",
+      "subject_type": "theory",
+      "division_id": 2,
+      "division_name": "SE-B",
+      "teacher_id": 1,
+      "teacher_name": "Dr. Anita Deshmukh",
+      "slot_id": 10,
+      "day": "Tue",
+      "period": 4,
+      "start_time": "12:15",
+      "end_time": "13:15",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 3,
+      "session_no": 1,
+      "subject_id": 2,
+      "subject_code": "CS201",
+      "subject_name": "Data Structures",
+      "subject_type": "theory",
+      "division_id": 1,
+      "division_name": "SE-A",
+      "teacher_id": 2,
+      "teacher_name": "Prof. Rahul Kulkarni",
+      "slot_id": 11,
+      "day": "Tue",
+      "period": 5,
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 15,
+      "session_no": 1,
+      "subject_id": 5,
+      "subject_code": "CS202",
+      "subject_name": "Data Structures Lab",
+      "subject_type": "lab",
+      "division_id": 2,
+      "division_name": "SE-B",
+      "teacher_id": 5,
+      "teacher_name": "Prof. Sneha Bhosale",
+      "slot_id": 15,
+      "day": "Wed",
+      "period": 3,
+      "start_time": "11:15",
+      "end_time": "12:15",
+      "room_id": 4,
+      "room_name": "LAB-1"
+    },
+    {
+      "run_id": 1,
+      "session_id": 5,
+      "session_no": 1,
+      "subject_id": 3,
+      "subject_code": "EC201",
+      "subject_name": "Digital Logic Design",
+      "subject_type": "theory",
+      "division_id": 1,
+      "division_name": "SE-A",
+      "teacher_id": 3,
+      "teacher_name": "Prof. Meera Iyer",
+      "slot_id": 16,
+      "day": "Wed",
+      "period": 4,
+      "start_time": "12:15",
+      "end_time": "13:15",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 4,
+      "session_no": 2,
+      "subject_id": 2,
+      "subject_code": "CS201",
+      "subject_name": "Data Structures",
+      "subject_type": "theory",
+      "division_id": 1,
+      "division_name": "SE-A",
+      "teacher_id": 2,
+      "teacher_name": "Prof. Rahul Kulkarni",
+      "slot_id": 17,
+      "day": "Wed",
+      "period": 5,
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 10,
+      "session_no": 2,
+      "subject_id": 1,
+      "subject_code": "MA201",
+      "subject_name": "Discrete Mathematics",
+      "subject_type": "theory",
+      "division_id": 2,
+      "division_name": "SE-B",
+      "teacher_id": 1,
+      "teacher_name": "Dr. Anita Deshmukh",
+      "slot_id": 18,
+      "day": "Wed",
+      "period": 6,
+      "start_time": "15:00",
+      "end_time": "16:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 13,
+      "session_no": 1,
+      "subject_id": 3,
+      "subject_code": "EC201",
+      "subject_name": "Digital Logic Design",
+      "subject_type": "theory",
+      "division_id": 2,
+      "division_name": "SE-B",
+      "teacher_id": 3,
+      "teacher_name": "Prof. Meera Iyer",
+      "slot_id": 19,
+      "day": "Thu",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 7,
+      "session_no": 1,
+      "subject_id": 5,
+      "subject_code": "CS202",
+      "subject_name": "Data Structures Lab",
+      "subject_type": "lab",
+      "division_id": 1,
+      "division_name": "SE-A",
+      "teacher_id": 5,
+      "teacher_name": "Prof. Sneha Bhosale",
+      "slot_id": 22,
+      "day": "Thu",
+      "period": 4,
+      "start_time": "12:15",
+      "end_time": "13:15",
+      "room_id": 4,
+      "room_name": "LAB-1"
+    },
+    {
+      "run_id": 1,
+      "session_id": 1,
+      "session_no": 1,
+      "subject_id": 1,
+      "subject_code": "MA201",
+      "subject_name": "Discrete Mathematics",
+      "subject_type": "theory",
+      "division_id": 1,
+      "division_name": "SE-A",
+      "teacher_id": 1,
+      "teacher_name": "Dr. Anita Deshmukh",
+      "slot_id": 24,
+      "day": "Thu",
+      "period": 6,
+      "start_time": "15:00",
+      "end_time": "16:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 2,
+      "session_no": 2,
+      "subject_id": 1,
+      "subject_code": "MA201",
+      "subject_name": "Discrete Mathematics",
+      "subject_type": "theory",
+      "division_id": 1,
+      "division_name": "SE-A",
+      "teacher_id": 1,
+      "teacher_name": "Dr. Anita Deshmukh",
+      "slot_id": 25,
+      "day": "Fri",
+      "period": 1,
+      "start_time": "09:00",
+      "end_time": "10:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 12,
+      "session_no": 2,
+      "subject_id": 2,
+      "subject_code": "CS201",
+      "subject_name": "Data Structures",
+      "subject_type": "theory",
+      "division_id": 2,
+      "division_name": "SE-B",
+      "teacher_id": 2,
+      "teacher_name": "Prof. Rahul Kulkarni",
+      "slot_id": 26,
+      "day": "Fri",
+      "period": 2,
+      "start_time": "10:00",
+      "end_time": "11:00",
+      "room_id": 3,
+      "room_name": "R103"
+    },
+    {
+      "run_id": 1,
+      "session_id": 16,
+      "session_no": 2,
+      "subject_id": 5,
+      "subject_code": "CS202",
+      "subject_name": "Data Structures Lab",
+      "subject_type": "lab",
+      "division_id": 2,
+      "division_name": "SE-B",
+      "teacher_id": 5,
+      "teacher_name": "Prof. Sneha Bhosale",
+      "slot_id": 27,
+      "day": "Fri",
+      "period": 3,
+      "start_time": "11:15",
+      "end_time": "12:15",
+      "room_id": 4,
+      "room_name": "LAB-1"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "run_id": 2,
+  "status": "ok",
+  "colors_used": 15,
+  "score": {
+    "total": 0,
+    "breakdown": {
+      "consecutive": 0,
+      "gap": 0,
+      "spread": 0
+    }
+  },
+  "violations": []
+}
