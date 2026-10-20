@@ -1,0 +1,43 @@
+:root {
+  --bg-page: #F8F6F0;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F3EFE6;
+  --bg-card-header: #FAF7F2;
+  --bg-hover: #F2ECE1;
+  --border-subtle: #E6E0D4;
+  --border-strong: #D5CCA2;
+  --text-primary: #2C2824;
+  --text-secondary: #5E584F;
+  --text-muted: #8A8377;
+  --accent: #7D6343;
+  --accent-light: #F4EFE6;
+  --accent-border: #D1C2A5;
+  --badge-theory-bg: #EAF2EC;
+  --badge-theory-text: #245A3D;
+  --badge-lab-bg: #FCF1E6;
+  --badge-lab-text: #96531A;
+  --shadow-sm: 0 1px 3px rgba(44, 40, 36, 0.05);
+  --shadow-md: 0 4px 16px rgba(44, 40, 36, 0.06);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+button, select, input {
+  font-family: inherit;
+}
