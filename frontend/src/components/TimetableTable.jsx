@@ -47,16 +47,29 @@ export default function TimetableTable({ timetable, loading, error }) {
     return (
       <div className="table-container-empty">
         <div className="loading-spinner"></div>
-        <p>Loading weekly timetable...</p>
+        <p>Loading weekly timetable from database...</p>
       </div>
     );
   }
 
-  if (error || !timetable) {
+  if (error) {
     return (
       <div className="table-container-empty error">
-        <p className="error-title">Unable to display timetable</p>
-        <p className="error-desc">{error || 'Timetable data is currently unavailable.'}</p>
+        <p className="error-title">Schedule Temporarily Unavailable</p>
+        <p className="error-desc">{error}</p>
+      </div>
+    );
+  }
+
+  if (!timetable || allRows.length === 0 || timetable.status === 'empty') {
+    return (
+      <div className="table-container-empty">
+        <div className="empty-calendar-icon">📅</div>
+        <h4 className="empty-title">No Timetable Generated Yet</h4>
+        <p className="empty-desc">
+          Select an academic dataset from the control bar above and click{' '}
+          <strong>Generate Timetable</strong> to create a conflict-free weekly schedule.
+        </p>
       </div>
     );
   }
