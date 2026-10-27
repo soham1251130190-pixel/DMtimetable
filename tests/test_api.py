@@ -107,3 +107,134 @@ def test_cors_multiple_frontend_origins(monkeypatch):
     assert response.status_code == 200
     assert response.headers.get("access-control-allow-origin") == "https://production.vercel.app"
 
+
+def test_list_datasets_endpoint():
+    """Verify GET /api/datasets returns available dataset options."""
+    client = TestClient(app)
+    response = client.get("/api/datasets")
+    assert response.status_code == 200
+    payload = response.json()
+    assert "datasets" in payload
+    dataset_ids = [d["id"] for d in payload["datasets"]]
+    assert "default" in dataset_ids
+    assert "small" in dataset_ids
+    assert "impossible" in dataset_ids
+
+
+def test_get_latest_timetable_default():
+    """Verify GET /api/timetable/latest returns timetable rows and metadata from SQLite."""
+    client = TestClient(app)
+    response = client.get("/api/timetable/latest")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] in ("completed", "sample", "ok")
+    assert data["run_id"] is not None
+    assert data["total_sessions"] > 0
+    assert len(data["rows"]) == data["total_sessions"]
+    assert len(data["divisions"]) > 0
+    assert len(data["teachers"]) > 0
+    assert len(data["rooms"]) > 0
+    assert len(data["timeslots"]) > 0
+    assert "violations" in data
+    assert "score" in data
+
+
+def test_get_latest_timetable_division_filter():
+    """Verify GET /api/timetable/latest with division_id filter returns only matching sessions."""
+    client = TestClient(app)
+    response = client.get("/api/timetable/latest", params={"division_id": 1})
+    assert response.status_code == 200
+    data = response.json()
+    assert all(r["division_id"] == 1 for r in data["rows"])
+
+
+def test_get_latest_timetable_empty_dataset():
+    """Verify GET /api/timetable/latest handles datasets without successful runs gracefully."""
+    client = TestClient(app)
+    response = client.get("/api/timetable/latest", params={"dataset": "impossible"})
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "empty"
+    assert data["run_id"] is None
+    assert data["rows"] == []
+    assert len(data["divisions"]) > 0
+
+
+def test_get_conflict_graph_endpoint():
+    """Verify GET /api/graph returns React Flow compatible nodes and edges."""
+    client = TestClient(app)
+    response = client.get("/api/graph")
+    assert response.status_code == 200
+    data = response.json()
+    assert "metadata" in data
+    assert data["metadata"]["total_nodes"] > 0
+    assert data["metadata"]["total_edges"] > 0
+    assert "nodes" in data
+    assert "edges" in data
+    # Verify React Flow node contract
+    first_node = data["nodes"][0]
+    assert "id" in first_node
+    assert "position" in first_node
+    assert "data" in first_node
+    assert "sessionId" in first_node["data"]
+    assert "subjectCode" in first_node["data"]
+    # Verify React Flow edge contract
+    first_edge = data["edges"][0]
+    assert "id" in first_edge
+    assert "source" in first_edge
+    assert "target" in first_edge
+    assert "data" in first_edge
+
+
+def test_generate_timetable_success(tmp_path, monkeypatch):
+    """Verify POST /api/generate invokes pipeline and persists timetable to SQLite."""
+    import shutil
+    import timetable.backend.db.config as cfg
+    temp_db = tmp_path / "test_gen.db"
+    shutil.copyfile(cfg.DATA_DIR / "small.db", temp_db)
+    monkeypatch.setenv("TIMETABLE_DB_PATH", str(temp_db))
+
+    client = TestClient(app)
+    response = client.post(
+        "/api/generate",
+        json={"dataset": "default", "seed": 42, "optimizer_iterations": 20},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "ok"
+    assert data["run_id"] is not None
+    assert data["colors_used"] > 0
+    assert data["violations"] == []
+    assert data["score"] is not None
+
+
+def test_generate_timetable_impossible_failure(tmp_path, monkeypatch):
+    """Verify POST /api/generate on impossible dataset fails safely and returns 422 with explanation."""
+    import shutil
+    import timetable.backend.db.config as cfg
+    temp_db = tmp_path / "test_impossible.db"
+    shutil.copyfile(cfg.DATA_DIR / "impossible.db", temp_db)
+    monkeypatch.setenv("TIMETABLE_DB_PATH", str(temp_db))
+
+    client = TestClient(app)
+    response = client.post(
+        "/api/generate",
+        json={"dataset": "default", "max_attempts": 2},
+    )
+    assert response.status_code == 422
+    data = response.json()
+    assert data["status"] == "failed"
+    assert "message" in data
+    assert "violations" in data
+
+
+def test_generate_timetable_invalid_dataset():
+    """Verify POST /api/generate with unknown dataset returns 400 Bad Request."""
+    client = TestClient(app)
+    response = client.post(
+        "/api/generate",
+        json={"dataset": "non_existent_dataset"},
+    )
+    assert response.status_code == 400
+
+

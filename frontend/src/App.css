@@ -21,59 +21,189 @@
   gap: 16px;
 }
 
-.header-connectivity {
+/* ================= Header Controls & Generator Toolbar ================= */
+.header-actions {
   display: flex;
   align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.connectivity-pill {
+.dataset-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dataset-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.dataset-select {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  max-width: 280px;
+}
+
+.dataset-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.generate-btn {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 11px;
+  gap: 8px;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 9px 20px;
+  font-size: 13px;
   font-weight: 600;
-  border: 1px solid transparent;
-  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
 }
 
-.connectivity-pill.online {
-  background-color: #EDF7ED;
-  color: #1E4620;
-  border-color: #C8E6C9;
+.generate-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4338ca 0%, #4f46e5 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.45);
 }
 
-.connectivity-pill.offline {
-  background-color: #FFF8E1;
-  color: #795548;
-  border-color: #FFE082;
+.generate-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
-.connectivity-pill.checking {
-  background-color: #F5F5F5;
-  color: #757575;
-  border-color: #E0E0E0;
+.generate-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
-.connectivity-dot {
-  width: 7px;
-  height: 7px;
+.btn-icon {
+  font-size: 14px;
+}
+
+.btn-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  display: inline-block;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
 }
 
-.connectivity-pill.online .connectivity-dot {
-  background-color: #2E7D32;
-  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+/* ================= Notification Alert Banner ================= */
+.notification-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  animation: fadeIn 0.3s ease;
 }
 
-.connectivity-pill.offline .connectivity-dot {
-  background-color: #B78103;
+.notification-banner.success {
+  background-color: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #10b981;
 }
 
-.connectivity-pill.checking .connectivity-dot {
-  background-color: #9E9E9E;
+.notification-banner.error {
+  background-color: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.notification-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.notification-icon {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.notification-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.notification-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.notification-close {
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.notification-close:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ================= Status Badges & Empty States ================= */
+.metric-badge.verified {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.metric-badge.pending {
+  background-color: rgba(156, 163, 175, 0.15);
+  color: #9ca3af;
+}
+
+.metric-badge.warning {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.empty-calendar-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+  opacity: 0.85;
+}
+
+.empty-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.empty-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
 .brand-section {
